@@ -3,13 +3,10 @@ package com.example.remedialucp2.room
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "buku")
-data class Buku(
-
+@Entity(tableName = "pengarang")
+data class Pengarang(
     @PrimaryKey(autoGenerate = true)
-    val bukuId: Int = 0,
-
-    val judul: String,
-
+    val pengarangId: Int = 0,
+    val nama: String,
     val isDeleted: Boolean = false
 )
