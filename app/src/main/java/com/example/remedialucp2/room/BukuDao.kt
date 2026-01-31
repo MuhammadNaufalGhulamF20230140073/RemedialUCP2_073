@@ -1,7 +1,6 @@
 package com.example.remedialucp2.room
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -21,17 +20,9 @@ interface BukuDao {
     suspend fun softDelete(id: Int)
 
     @Query("""
-        SELECT * FROM buku 
-        WHERE isDeleted = 0 
+        SELECT * FROM buku
+        WHERE isDeleted = 0
         ORDER BY judul ASC
     """)
     fun getSemuaBuku(): Flow<List<Buku>>
-
-    @Query("""
-        SELECT COUNT(*) FROM buku 
-        WHERE kategoriId = :kategoriId 
-        AND status = 'dipinjam'
-        AND isDeleted = 0
-    """)
-    suspend fun cekBukuDipinjam(kategoriId: Int): Int
 }
